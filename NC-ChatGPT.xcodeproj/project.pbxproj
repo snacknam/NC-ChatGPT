@@ -13,6 +13,7 @@
 		FD08B3BD2A9508C70074E707 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD08B3BC2A9508C70074E707 /* Preview Assets.xcassets */; };
 		FD08B3C42A9510CB0074E707 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD08B3C32A9510CB0074E707 /* ChatViewModel.swift */; };
 		FD08B3C62A9512CB0074E707 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD08B3C52A9512CB0074E707 /* Network.swift */; };
+		FD3CED002A95272F00A1C98C /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD3CECFF2A95272F00A1C98C /* Secret.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		FD08B3BC2A9508C70074E707 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FD08B3C32A9510CB0074E707 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		FD08B3C52A9512CB0074E707 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		FD3CECFF2A95272F00A1C98C /* Secret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				FD08B3B72A9508C60074E707 /* ChatView.swift */,
 				FD08B3C32A9510CB0074E707 /* ChatViewModel.swift */,
 				FD08B3C52A9512CB0074E707 /* Network.swift */,
+				FD3CECFF2A95272F00A1C98C /* Secret.plist */,
 				FD08B3B92A9508C70074E707 /* Assets.xcassets */,
 				FD08B3BB2A9508C70074E707 /* Preview Content */,
 			);
@@ -131,6 +134,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD3CED002A95272F00A1C98C /* Secret.plist in Resources */,
 				FD08B3BD2A9508C70074E707 /* Preview Assets.xcassets in Resources */,
 				FD08B3BA2A9508C70074E707 /* Assets.xcassets in Resources */,
 			);
