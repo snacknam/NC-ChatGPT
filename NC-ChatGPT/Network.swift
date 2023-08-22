@@ -10,7 +10,7 @@ import Foundation
 class OpenAIService {
     private let url = URL(string: "https://api.openai.com/v1/chat/completions")!
     
-    func sendMessage(messages: [Message]) async throws -> ChatResponse {
+    func requestMessage(messages: [Message]) async throws -> ChatResponse {
         var request = URLRequest(url: url)
         
         request.addValue("Bearer \(Bundle.main.openAIKey)", forHTTPHeaderField: "Authorization")
