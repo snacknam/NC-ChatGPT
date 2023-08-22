@@ -9,6 +9,7 @@ import SwiftUI
 
 class ChatViewModel: ObservableObject {
     @Published var messages: [Message] = []
+    @Published var currentInput: String = ""
     
     func sendMessage() {
         
