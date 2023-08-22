@@ -26,7 +26,7 @@ struct ChatMessage: Codable {
     let content: String
 }
 
-enum SenderRole: String, Encodable {
+enum SenderRole: String, Codable {
     case system
     case user
     case assistant
