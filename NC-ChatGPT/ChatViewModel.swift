@@ -14,9 +14,3 @@ class ChatViewModel: ObservableObject {
         
     }
 }
-
-struct Message: Decodable {
-    let id: UUID
-    let content: String
-    let createAt: Date
-}

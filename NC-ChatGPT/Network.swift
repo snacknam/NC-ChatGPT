@@ -8,24 +8,38 @@
 import Foundation
 
 class OpenAIService {
-    let url = "https://api.openai.com/v1/chat/completions"
-    func sendMessage() {
+    private let url = "https://api.openai.com/v1/chat/completions"
+    
+    func sendMessage(messages: [Message]) async throws -> Response {
+        var request = URLRequest(url: url)
         
+        request.addValue("Bearer \(Bundle.main.openAIKey)", forHTTPHeaderField: "Authorization")
+        request.httpMethod = "POST"
+    
+        let chatMessage = messages.map{ChatMessage(role: $0.role, content: $0.content)}
+        let requestBody = ChatBody(model: "gpt-3.5-turbo", messages: chatMessage)
+        request.httpBody = try JSONEncoder.encode(requestBody)
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse,
+              httpResponse.statusCode >= 200,
+              httpResponse.statusCode < 300 else {
+            throw URLError(.badServerResponse)
+        }
+        
+        let decodedData = try JSONDecoder().decode(ChatResponse.self, from: data)
+        return decodedData
     }
 }
 
-struct ChatBody: Encodable {
-    let model: String
-    let messages: [ChatMessage]
-}
-
-struct ChatMessage: Encodable {
-    let role: SenderRole
-    let content: String
-}
-
-enum SenderRole: String, Encodable {
-    case system
-    case user
-    case assistant
+extension Bundle {
+    var openAIKey: String {
+        guard let file = self.path(forResource: "Secret", ofType: "plist") else { return "" }
+        guard let resource = NSDictionary(contentsOf: file) else { return "" }
+        guard let key = resource["OpenAIKey"] as? String else {
+            fatalError("OpenAIKey error")
+        }
+        return key
+    }
 }
