@@ -14,6 +14,7 @@ class OpenAIService {
         var request = URLRequest(url: url)
         
         request.addValue("Bearer \(Bundle.main.openAIKey)", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
     
         let chatMessage = messages.map{ChatMessage(role: $0.role, content: $0.content)}
@@ -29,7 +30,6 @@ class OpenAIService {
         }
         
         let decodedData = try JSONDecoder().decode(ChatResponse.self, from: data)
-        print(decodedData)
         return decodedData
     }
 }
