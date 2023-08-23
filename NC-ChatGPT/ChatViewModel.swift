@@ -10,6 +10,7 @@ import SwiftUI
 class ChatViewModel: ObservableObject {
     @Published var messages: [Message] = []
     @Published var currentInput: String = ""
+    @Published var isLoading: Bool = false
     
     private let openAIService = OpenAIService()
     
@@ -17,6 +18,7 @@ class ChatViewModel: ObservableObject {
         let newMessage = Message(id: UUID(), role: .user, content: currentInput, createAt: Date())
         messages.append(newMessage)
         currentInput = ""
+        isLoading = true
         
         Task {
             let response = try await openAIService.requestMessage(messages: messages)
@@ -28,6 +30,7 @@ class ChatViewModel: ObservableObject {
             await MainActor.run(body: {
                 messages.append(receivedMessage)
             })
+            isLoading = false
         }
     }
 }
