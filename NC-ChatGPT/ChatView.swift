@@ -18,10 +18,15 @@ struct ChatView: View {
             VStack {
                 Spacer()
                 if viewModel.messages.isEmpty {
-                    VStack(spacing: 4) {
-                        Text("Ask Anything!")
-                            .font(.system(size: 20, weight: .semibold))
-                        Text("The ChatGPT will answer your question!")
+                    VStack(spacing: 8) {
+                        HStack(spacing: 8) {
+                            Image(systemName: "paperplane.circle.fill")
+                                .resizable()
+                                .frame(width: 24, height: 24)
+                            Text("Ask Anything!")
+                                .font(.system(size: 20, weight: .semibold))
+                        }
+                        Text("ChatGPT will answer your question")
                             .font(.system(size: 16))
                             .foregroundColor(.gray)
                     }
@@ -79,6 +84,7 @@ struct ChatView: View {
                         message.role == .user ? Color.white : Color.white
                     )
                     .cornerRadius(8)
+                    .padding(.leading, 40)
                 Image(systemName: "person.circle.fill")
                     .resizable()
                     .frame(width: 24, height: 24)
@@ -95,6 +101,7 @@ struct ChatView: View {
                         message.role == .user ? Color.white : Color.white
                     )
                     .cornerRadius(8)
+                    .padding(.trailing, 40)
                 Spacer()
             }
         }
